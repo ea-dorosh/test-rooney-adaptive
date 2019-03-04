@@ -20,3 +20,51 @@ if (navMain.classList.contains('main-nav--closed')) {
     navTel.classList.add('main-nav__phone-none');
     }
 });
+
+// слайдер с отзывами в 320ой ширине
+
+var feedbackBtnBack = document.querySelector('.feedback-button--back');
+var feedbackBtnNext = document.querySelector('.feedback-button--next');
+var feedbackItems = document.querySelectorAll('.feedback__block');
+var i = 0;
+
+var showPrevFeedback = function () {
+    feedbackItems[i].classList.remove('feedback__block--active');
+    feedbackItems[i].classList.add('feedback__block--hidden');
+     i = i - 1;
+     if( i < 0){
+       i = feedbackItems.length - 1;
+     }
+     feedbackItems[i].classList.remove('feedback__block--hidden');
+     feedbackItems[i].classList.add('feedback__block--active');
+}
+
+var showNextFeedback = function () {
+    feedbackItems[i].classList.remove('feedback__block--active');
+    feedbackItems[i].classList.add('feedback__block--hidden');
+    i = i+1;
+    if( i >= feedbackItems.length){
+      i = 0;
+  }
+    feedbackItems[i].classList.remove('feedback__block--hidden');
+    feedbackItems[i].classList.add('feedback__block--active');
+}
+
+feedbackBtnBack.addEventListener('click', function() {
+    showPrevFeedback();
+});
+
+feedbackBtnNext.addEventListener('click', function() {
+    showNextFeedback();
+});
+
+feedbackBtnNext.onclick = function(){
+    feedbackItems[i].classList.remove('feedback__block--active');
+    feedbackItems[i].classList.add('feedback__block--hidden');
+    i = i+1;
+    if( i >= feedbackItems.length){
+      i = 0;
+  }
+    feedbackItems[i].classList.remove('feedback__block--hidden');
+    feedbackItems[i].classList.add('feedback__block--active');
+};

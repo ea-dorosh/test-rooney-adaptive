@@ -1472,6 +1472,7 @@ body {
 }
 
 .feedback__block {
+    min-height: 315px;
     margin-top: 41px;
     margin-left: 29px;
 }
