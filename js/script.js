@@ -27,27 +27,32 @@ var feedbackBtnBack = document.querySelector('.feedback-button--back');
 var feedbackBtnNext = document.querySelector('.feedback-button--next');
 var feedbackItems = document.querySelectorAll('.feedback__block');
 var i = 0;
+var currentPage = document.querySelector('.indicator-current--number');
+
+
 
 var showPrevFeedback = function () {
     feedbackItems[i].classList.remove('feedback__block--active');
     feedbackItems[i].classList.add('feedback__block--hidden');
-     i = i - 1;
-     if( i < 0){
+    i = i - 1;
+    if ( i < 0) {
        i = feedbackItems.length - 1;
-     }
-     feedbackItems[i].classList.remove('feedback__block--hidden');
-     feedbackItems[i].classList.add('feedback__block--active');
+    }
+    feedbackItems[i].classList.remove('feedback__block--hidden');
+    feedbackItems[i].classList.add('feedback__block--active');
+    currentPage.innerHTML = i + 1;
 }
 
 var showNextFeedback = function () {
     feedbackItems[i].classList.remove('feedback__block--active');
     feedbackItems[i].classList.add('feedback__block--hidden');
     i = i+1;
-    if( i >= feedbackItems.length){
-      i = 0;
-  }
+    if ( i >= feedbackItems.length) {
+        i = 0;
+    }
     feedbackItems[i].classList.remove('feedback__block--hidden');
     feedbackItems[i].classList.add('feedback__block--active');
+    currentPage.innerHTML = i + 1;
 }
 
 feedbackBtnBack.addEventListener('click', function() {
@@ -57,14 +62,3 @@ feedbackBtnBack.addEventListener('click', function() {
 feedbackBtnNext.addEventListener('click', function() {
     showNextFeedback();
 });
-
-feedbackBtnNext.onclick = function(){
-    feedbackItems[i].classList.remove('feedback__block--active');
-    feedbackItems[i].classList.add('feedback__block--hidden');
-    i = i+1;
-    if( i >= feedbackItems.length){
-      i = 0;
-  }
-    feedbackItems[i].classList.remove('feedback__block--hidden');
-    feedbackItems[i].classList.add('feedback__block--active');
-};
